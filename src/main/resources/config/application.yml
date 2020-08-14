@@ -1,0 +1,38 @@
+spring:
+  profiles:
+    active: local
+
+---
+spring:
+  profiles: local
+
+  boot:
+    admin:
+      client:
+        url: http://localhost:30000
+        instance:
+          service-url: http://localhost:${server.port}
+
+  dataSource:
+    url: jdbc:mysql://db.generalfactory.co.kr:3306/cp?useUnicode=true&charaterEncoding=utf-8
+    username: cp
+    password: cp2020!!
+
+security:
+  jwt:
+    public-key: classpath:public.txt
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+server:
+  port: 20001
+
+---
